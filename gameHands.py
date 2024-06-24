@@ -6,7 +6,7 @@ import pygame
 
 # Variables globales
 game_duration = 120
-fill_duration = 0.5  # Duración en segundos para llenar el cuadro con su propio color
+fill_duration = 0.3  # Duración en segundos para llenar el cuadro con su propio color
 points = 0
 hand_inside_box = False
 box_visible = False
@@ -20,17 +20,18 @@ current_color_index = 0
 high_contrast_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]
 num_colors = len(high_contrast_colors)
 levels = [
-    {"score_range": (0, 2), "box_interval_time": 2500, "reaction_time": 1200},
-    {"score_range": (3, 6), "box_interval_time": 2000, "reaction_time": 1000},
-    {"score_range": (7, 9), "box_interval_time": 1500, "reaction_time": 800},
-    {"score_range": (10, 12), "box_interval_time": 1000, "reaction_time": 600},
-    {"score_range": (13, float('inf')), "box_interval_time": 700, "reaction_time": 400}
+    {"score_range": (0, 2), "box_interval_time": 1750, "reaction_time": 1200},
+    {"score_range": (3, 6), "box_interval_time": 1500, "reaction_time": 1100},
+    {"score_range": (7, 9), "box_interval_time": 1250, "reaction_time": 1000},
+    {"score_range": (10, 12), "box_interval_time": 1000, "reaction_time": 900},
+    {"score_range": (13, float('inf')), "box_interval_time": 750, "reaction_time": 800}
 ]
 
 # Inicializar pygame para reproducir audio
 pygame.mixer.init()
+
 pygame.mixer.music.load('assets/music.mp3')
-pygame.mixer.music.play()
+pygame.mixer.music.play(loops=10)
 positive_sound = pygame.mixer.Sound('assets/tada.mp3')
 negative_sound = pygame.mixer.Sound('assets/boo.mp3')
 start_game = pygame.mixer.Sound('assets/start.mp3')
@@ -44,7 +45,7 @@ mp_hands = mp.solutions.hands
 cap = cv2.VideoCapture(0)
 
 # Definir dimensiones del cuadro
-box_w, box_h = 80, 80
+box_w, box_h = 70, 70
 
 
 # Funciones
